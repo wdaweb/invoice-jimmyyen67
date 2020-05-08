@@ -11,6 +11,13 @@
 <body>
   <?php include "./include/header.php" ?>
   <form action="save_invoice.php" method="POST">
+    年份：
+    <select name="year">
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+    </select>
+    <br>
     期別：
     <select name="period">
       <option value="1">1,2月</option>
@@ -20,15 +27,11 @@
       <option value="5">9,10月</option>
       <option value="6">11,12月</option>
     </select>
-    年份：
-    <select name="year">
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
-    </select>
+    <br>
     獎號：
     <input type="text" name="code">
     <input type="text" name="number">
+    <br>
     金額：
     <input type="number" name="expend">
     <input type="submit" value="儲存">
