@@ -10,17 +10,20 @@
 </head>
 
 <body>
-  <?php include "./include/header.php" ?>
+  <?php
+  $year = date('Y');
+  $lastyear = $year - 1;
+
+  ?>
   <form action="invoice_save.php" method="POST">
     年份：
-    <select name="year">
-      <option value="2020">2020</option>
-      <option value="2021">2021</option>
-      <option value="2022">2022</option>
+    <select name="year" required>
+      <option value="<?= $year ?>" selected><?= $year ?></option>
+      <option value="<?= $lastyear ?>"><?= $lastyear ?></option>
     </select>
     <br>
     期別：
-    <select name="period">
+    <select name="period" required>
       <option value="1">1,2月</option>
       <option value="2">3,4月</option>
       <option value="3">5,6月</option>
@@ -30,13 +33,15 @@
     </select>
     <br>
     獎號：
-    <input type="text" name="code">
-    <input type="text" name="number">
+    <input type="text" name="code" onkeyup="this.value = this.value.toUpperCase();" required>
+    <input type="text" name="number" required>
     <br>
     金額：
-    <input type="number" name="expend">
+    <input type="number" name="expend" required>
     <input type="submit" value="儲存">
-  </form>
+
+  </form> 
+  <a href="invoice.php"><button>查看發票</button></a>
 </body>
 
 </html>
