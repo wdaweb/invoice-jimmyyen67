@@ -16,7 +16,7 @@ $code = $edit['code'];
 $number = $edit['number'];
 $expend = $edit['expend'];
 
-// 年份選擇
+// 預設年份
 $currentyear = date('Y');
 $lastyear = $year - 1;
 ?>
