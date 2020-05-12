@@ -13,35 +13,75 @@
   <?php
   $year = date('Y');
   $lastyear = $year - 1;
-
+  include "./include/header.php";
   ?>
-  <form action="invoice_save.php" method="POST">
-    年份：
-    <select name="year" required>
-      <option value="<?= $year ?>" selected><?= $year ?></option>
-      <option value="<?= $lastyear ?>"><?= $lastyear ?></option>
-    </select>
-    <br>
-    期別：
-    <select name="period" required>
-      <option value="1">1,2月</option>
-      <option value="2">3,4月</option>
-      <option value="3">5,6月</option>
-      <option value="4">7,8月</option>
-      <option value="5">9,10月</option>
-      <option value="6">11,12月</option>
-    </select>
-    <br>
-    獎號：
-    <input type="text" name="code" onkeyup="this.value = this.value.toUpperCase();" required>
-    <input type="text" name="number" required>
-    <br>
-    金額：
-    <input type="number" name="expend" required>
-    <input type="submit" value="儲存">
 
-  </form> 
-  <a href="invoice.php"><button>查看發票</button></a>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <table>
+        <form action="invoice_save.php" method="POST">
+          <tr>
+            <td>
+              年份：
+            </td>
+            <td>
+              <select name="year" required>
+                <option value="<?= $year ?>" selected><?= $year ?></option>
+                <option value="<?= $lastyear ?>"><?= $lastyear ?></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              期別：
+            </td>
+            <td>
+              <select name="period" required>
+                <option value="1">1,2月</option>
+                <option value="2">3,4月</option>
+                <option value="3">5,6月</option>
+                <option value="4">7,8月</option>
+                <option value="5">9,10月</option>
+                <option value="6">11,12月</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              獎號：
+            </td>
+            <td>
+              <input type="text" name="code" id="code" onkeyup="this.value = this.value.toUpperCase();" required class="">
+              <input type="text" name="number" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              金額：
+            </td>
+            <td>
+              <input type="number" name="expend" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="submit" value="儲存" class="btn btn-primary btn-sm mt-3">
+            </td>
+            <td>
+              <input type="reset" value="清除" class="btn btn-secondary btn-sm mt-3">
+            </td>
+        </form>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a href="invoice.php"><button class="btn btn-secondary btn mt-3">查看發票</button></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-4"></div>
+    </>
 </body>
 
 </html>

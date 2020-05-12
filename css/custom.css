@@ -1,0 +1,9 @@
+.row {
+  background: #cccccc;
+  border: 2px #aaaaaa solid;
+  margin-bottom: 5px;
+}
+.row div {
+  border: 1px solid #aaaaaa;
+  background: ;
+}
