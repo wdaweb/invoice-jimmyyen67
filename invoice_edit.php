@@ -67,7 +67,7 @@ $lastyear = $year - 1;
             </tr>
     </form>
     <tr>
-        <td colspan="2"> <a href="invoice.php">返回</a></td>
+        <td colspan="2"> <a href="invoice_list.php">返回</a></td>
     </tr>
     </table>
 </body>

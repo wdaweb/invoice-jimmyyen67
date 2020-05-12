@@ -59,6 +59,14 @@
     $period = $period_display;
   }
 
+  if (isset($_GET['year'])) {
+    $year = $_GET['year'];
+  } else {
+    $year = date('Y');
+  }
+
+  echo $year;
+
   // 設定標題顯示月份
   if (isset($_GET['period']) && $_GET['period'] == 1) {
     $period_month = '1,2月';
@@ -95,7 +103,7 @@
       </table>
     </div>
     <div>
-      <h2><?= $period_month ?> 發票列表</h2>
+      <h2><?= $year ?>年<?= $period_month ?> 發票列表</h2>
     </div>
     <div clas="invoice_main">
       <table>

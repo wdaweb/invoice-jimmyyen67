@@ -75,7 +75,7 @@
         </tr>
         <tr>
           <td colspan="2">
-            <a href="invoice.php"><button class="btn btn-secondary btn mt-3">查看發票</button></a>
+            <a href="invoice_list.php"><button class="btn btn-secondary btn mt-3">查看發票</button></a>
           </td>
         </tr>
       </table>

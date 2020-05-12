@@ -62,7 +62,7 @@
       </tr>
       <tr>
         <td><a href="index.php">繼續登錄</a></td>
-        <td><a href="invoice.php">查看列表</a></td>
+        <td><a href="invoice_list.php">查看列表</a></td>
       </tr>
     </table>
   <?php
