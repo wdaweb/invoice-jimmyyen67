@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
   `code`,
   `number`,
   `expend`
-  ) values(
+  ) values (
     '" . $_POST['period'] . "',
     '" . $_POST['year'] . "',
     '" . $_POST['code'] . "',
@@ -31,7 +31,7 @@
   if ($_POST['period'] == 1) {
     $period = '1,2月';
   } elseif ($_POST['period'] == 2) {
-    $period = '3,41月';
+    $period = '3,4月';
   } elseif ($_POST['period'] == 3) {
     $period = '5,6月';
   } elseif ($_POST['period'] == 4) {

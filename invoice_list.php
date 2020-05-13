@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>統一發票管理系統</title>
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/bootstrap.css">
+
   <style>
     body {
       height: 100vh;
@@ -30,6 +31,7 @@
 <body>
   <?php
   include "./com/base.php";
+  include "./include/header.php";
 
   // 設定讀取現在月份時，自動設定period是哪一階段
   if (date('n') == 1 || date('n') == 2) {
@@ -59,14 +61,6 @@
     $period = $period_display;
   }
 
-  if (isset($_GET['year'])) {
-    $year = $_GET['year'];
-  } else {
-    $year = date('Y');
-  }
-
-  echo $year;
-
   // 設定標題顯示月份
   if (isset($_GET['period']) && $_GET['period'] == 1) {
     $period_month = '1,2月';
@@ -83,7 +77,8 @@
   }
 
   // 設定抓取內容
-  $sql = "select * from invoice where `period`=$period";
+  $year = date('Y');
+  $sql = "select * from invoice where (`period`=$period) AND (`year`=$year)";
   $res = $pdo->query($sql);
   $list = $res->fetchAll();
   ?>
@@ -92,20 +87,22 @@
     <div>
       <table>
         <tr>
-          <th><a href="?period=1">1,2月</a></th>
-          <th><a href="?period=2">3,4月</a></th>
-          <th><a href="?period=3">5.6月</a></th>
-          <th><a href="?period=4">7,8月</a></th>
-          <th><a href="?period=5">9,10月</a></th>
-          <th><a href="?period=6">11,12月</a></th>
-          <th> <a href="index.php"><button>登錄頁面</button></a></th>
+          <div>
+            <a href="?period=1"><button class="badge badge-warning">1,2月</button></a>
+            <a href="?period=2"><button class="badge badge-warning">3,4月</button></a>
+            <a href="?period=3"><button class="badge badge-warning">5.6月</button></a>
+            <a href="?period=4"><button class="badge badge-warning">7,8月</button></a>
+            <a href="?period=5"><button class="badge badge-warning">9,10月</button></a>
+            <a href="?period=6"><button class="badge badge-warning">11,12月</button></a>
+            <a href="index.php"><button class="badge badge-info">回首頁</button></a>
+          </div>
         </tr>
       </table>
     </div>
     <div>
-      <h2><?= $year ?>年<?= $period_month ?> 發票列表</h2>
+      <h2 class="mt-2"><?= $year ?>年 <?= $period_month ?> 發票列表</h2>
     </div>
-    <div clas="invoice_main">
+    <div>
       <table>
         <tr>
           <td>發票號碼</td>
@@ -123,10 +120,10 @@
             echo $list['expend'] . '元';
             echo "</td>";
             echo "<td>";
-            echo "<a href='invoice_edit.php?id=$list[id]'>編輯</a>";
+            echo "<a href='invoice_edit.php?id=$list[id]' class='btn btn-primary btn-sm active'>編輯</a>";
             echo "</td>";
             echo "<td>";
-            echo "<a href='invoice_delete.php?id=$list[id]'>刪除</a>";
+            echo "<a href='invoice_delete.php?id=$list[id]' class='btn btn-danger btn-sm'>刪除</a>";
             echo "</td>";
             echo "</tr>";
           }

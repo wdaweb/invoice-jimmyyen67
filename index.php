@@ -6,82 +6,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>統一發票管理系統</title>
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/bootstrap.css">
+  <style>
+    body {
+      height: 100vh;
+      font-weight: bolder;
+      font-family: 'Microsoft Jhenghei';
+    }
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
 </head>
 
-<body>
-  <?php
-  $year = date('Y');
-  $lastyear = $year - 1;
-  include "./include/header.php";
-  ?>
+<?php
+$year = date('Y');
+$lastyear = $year - 1;
+include "./include/header.php";
+?>
 
-  <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
-      <table>
-        <form action="invoice_save.php" method="POST">
-          <tr>
-            <td>
-              年份：
-            </td>
-            <td>
-              <select name="year" required>
-                <option value="<?= $year ?>" selected><?= $year ?></option>
-                <option value="<?= $lastyear ?>"><?= $lastyear ?></option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              期別：
-            </td>
-            <td>
-              <select name="period" required>
-                <option value="1">1,2月</option>
-                <option value="2">3,4月</option>
-                <option value="3">5,6月</option>
-                <option value="4">7,8月</option>
-                <option value="5">9,10月</option>
-                <option value="6">11,12月</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              獎號：
-            </td>
-            <td>
-              <input type="text" name="code" id="code" onkeyup="this.value = this.value.toUpperCase();" required class="">
-              <input type="text" name="number" required>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              金額：
-            </td>
-            <td>
-              <input type="number" name="expend" required>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="submit" value="儲存" class="btn btn-primary btn-sm mt-3">
-            </td>
-            <td>
-              <input type="reset" value="清除" class="btn btn-secondary btn-sm mt-3">
-            </td>
-        </form>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <a href="invoice_list.php"><button class="btn btn-secondary btn mt-3">查看發票</button></a>
-          </td>
-        </tr>
-      </table>
+<body>
+  <div class="container main">
+    <div>
+      <form action="invoice_save.php" method="POST">
+        <div class="form-group">
+          <label for="year">年份：</label>
+          <select name="year" required class="form-control form-control-sm col-3">
+            <option value="<?= $year ?>" selected><?= $year ?></option>
+            <option value="<?= $lastyear ?>"><?= $lastyear ?></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="period">期別：</label>
+          <select name="period" required class="form-control form-control-sm col-3">
+            <option value="1">&nbsp;1, 2月</option>
+            <option value="2">&nbsp;3, 4月</option>
+            <option value="3">&nbsp;5, 6月</option>
+            <option value="4">&nbsp;7,  8月</option>
+            <option value="5">&nbsp;9, 10月</option>
+            <option value="6">11,12月</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>獎號：</label>
+          <div class="form-row">
+            <div class="col-3">
+              <input type="text" name="code" id="code" onkeyup="this.value = this.value.toUpperCase();" required class="form-control form-control-sm
+            "></div>
+            <div class="col-5">
+              <input type="text" name="number" required class="form-control form-control-sm"></div>
+          </div>
+          <small class="form-text text-muted">*英文2碼、數字8碼</small>
+        </div>
+        <div class="form-group">
+          <label>金額：</label>
+          <input type="number" name="expend" required class="form-control form-control-sm col-3">
+          <small class="form-text text-muted">*必填選項</small>
+        </div>
+        <div>
+          <input type="submit" value="儲存" class="btn btn-primary btn-sm mt-2">
+          <input type="reset" value="清除" class="btn btn-danger btn-sm mt-2">
+          <a href="invoice_list.php"><button class="btn btn-secondary btn-sm mt-2">查看發票</button></a>
+        </div>
+      </form>
     </div>
-    <div class="col-4"></div>
-    </>
+  </div>
 </body>
 
 </html>
