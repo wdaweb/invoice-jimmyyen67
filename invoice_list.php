@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="./css/bootstrap.css">
 
   <style>
+    * {
+      text-align: center;
+    }
+
     body {
       height: 100vh;
     }
@@ -78,7 +82,7 @@
 
   // 設定抓取內容
   $year = date('Y');
-  $sql = "select * from invoice where (`period`=$period) AND (`year`=$year)";
+  $sql = "select * from invoice where `period`=$period";
   $res = $pdo->query($sql);
   $list = $res->fetchAll();
   ?>
@@ -102,36 +106,55 @@
     <div>
       <h2 class="mt-2"><?= $year ?>年 <?= $period_month ?> 發票列表</h2>
     </div>
-    <div>
-      <table>
-        <tr>
-          <td>發票號碼</td>
-          <td>發票金額</td>
-        </tr>
-        <tr>
-          <?php
-          foreach ($list as $list) {
-            echo "<tr>";
-            echo "<td>";
-            echo $list['code'];
-            echo $list['number'];
-            echo "</td>";
-            echo "<td>";
-            echo $list['expend'] . '元';
-            echo "</td>";
-            echo "<td>";
-            echo "<a href='invoice_edit.php?id=$list[id]' class='btn btn-primary btn-sm active'>編輯</a>";
-            echo "</td>";
-            echo "<td>";
-            echo "<a href='invoice_delete.php?id=$list[id]' class='btn btn-danger btn-sm'>刪除</a>";
-            echo "</td>";
-            echo "</tr>";
-          }
-          ?>
-        </tr>
-      </table>
+    <div class="container">
+      <div class="row">
+        <table class="table table-borderless table-hover">
+          <thead>
+            <tr class="row justify-content-md-center">
+              <th class="col-1">年份</th>
+              <th class="col-1">月份</th>
+              <th class="col-1">發票號碼</th>
+              <th class="col-1">金額</th>
+              <td class='col-0.5'>
+                <span class="btn-primary btn-sm active">編輯</span>
+              </td>
+              <td class='col-0.5'>
+                <span class="btn-danger btn-sm active">刪除</span>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            foreach ($list as $list) {
+              echo "<tr class='row justify-content-md-center'>";
+              echo "<td class='col-1'>";
+              echo $list['year'];
+              echo "</td>";
+              echo "<td class='col-1'>";
+              echo $period_month;
+              echo "</td>";
+              echo "<td class='col-1'>";
+              echo $list['code'];
+              echo $list['number'];
+              echo "</td>";
+              echo "<td class='col-1'>";
+              echo $list['expend'] . '元';
+              echo "</td>";
+              echo "<td class='col-0.5'>";
+              echo "<a href='invoice_edit.php?id=$list[id]' class='btn btn-primary btn-sm active'>編輯</a>";
+              echo "</td>";
+              echo "<td class='col-0.5'>";
+              echo "<a href='invoice_delete.php?id=$list[id]' class='btn btn-danger btn-sm'>刪除</a>";
+              echo "</td>";
+              echo "</tr>";
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+
 
 
 
