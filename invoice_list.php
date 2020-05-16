@@ -98,7 +98,8 @@
             <a href="?period=4"><button class="badge badge-warning">7,8月</button></a>
             <a href="?period=5"><button class="badge badge-warning">9,10月</button></a>
             <a href="?period=6"><button class="badge badge-warning">11,12月</button></a>
-            <a href="index.php"><button class="badge badge-info">回首頁</button></a>
+            <a href="award.php"><button class="badge badge-success">中獎號碼</button></a>
+            <a href="index.php"><button class="badge badge-info">首頁</button></a>
           </div>
         </tr>
       </table>
