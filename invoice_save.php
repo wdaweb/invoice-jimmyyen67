@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>發票登錄</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <?php
+  include "./include/header.php";
   include "./com/base.php";
 
   $sql = "insert into invoice (
@@ -44,27 +46,35 @@
 
   if ($res == 1) {
   ?>
-    <table>
-      <tr>
-        <th colspan="2">發票登錄成功！</th>
-      </tr>
-      <tr>
-        <td>月份：</td>
-        <td><?= $period ?></td>
-      </tr>
-      <tr>
-        <td>發票號碼：</td>
-        <td><?= $_POST['code'] ?><?= $_POST['number'] ?></td>
-      </tr>
-      <tr>
-        <td>發票金額：</td>
-        <td><?= $_POST['expend'] ?></td>
-      </tr>
-      <tr>
-        <td><a href="index.php">繼續登錄</a></td>
-        <td><a href="invoice_list.php">查看列表</a></td>
-      </tr>
-    </table>
+    <div class="container">
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <table>
+            <tr>
+              <th colspan="2">發票登錄成功！</th>
+            </tr>
+            <tr>
+              <td>月份：</td>
+              <td><?= $period ?></td>
+            </tr>
+            <tr>
+              <td>發票號碼：</td>
+              <td><?= $_POST['code'] ?><?= $_POST['number'] ?></td>
+            </tr>
+            <tr>
+              <td>發票金額：</td>
+              <td><?= $_POST['expend'] ?></td>
+            </tr>
+            <tr>
+              <td><a href="index.php">繼續登錄</a></td>
+              <td><a href="invoice_list.php">查看列表</a></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-4"></div>
+      </div>
+    </div>
   <?php
   } else {
     echo "新增失敗";
