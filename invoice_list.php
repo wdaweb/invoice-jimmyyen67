@@ -82,9 +82,7 @@
 
   // 設定抓取內容
   $year = date('Y');
-  $sql = "select * from invoice where `period`=$period";
-  $res = $pdo->query($sql);
-  $list = $res->fetchAll();
+  $list=all('invoice',['period'=> $period]);
   ?>
 
   <div class="container main">

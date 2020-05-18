@@ -11,12 +11,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <style>
-    * {
-      text-align: center;
-    }
-
     table {
       min-width: 800px;
+      text-align: center;
     }
 
     .loader_1 {
@@ -33,12 +30,18 @@
     .text {
       font-size: x-large;
     }
+    .reminder{
+      text-align: left;
+    }
   </style>
 </head>
 
 <body>
 
   <?php
+  include("./include/header.php");
+
+
   // 設定讀取現在月份時，自動設定period是哪一階段
   if (date('n') == 1 || date('n') == 2) {
     $period_display = 1;
@@ -99,7 +102,7 @@
   ?>
     <!-- 選單列表 -->
     <div class="d-flex justify-content-center mt-3 mb-3">
-    <nav class="nav nav-pills">
+      <nav class="nav nav-pills">
         <a class="nav-link active mr-2" href="index.php">首頁</a>
         <a class="btn btn-outline-primary" href="invoice_list.php">發票列表</a>
         <a class="nav-link" href="?period=1">1-2月</a>
@@ -120,7 +123,36 @@
             <h2>年月份</h2>
           </td>
           <td>
-            <h2><?= date('Y') ?>年 <?= $period_month ?> 發票中獎號碼</h2>
+            <span class="h3"><?= date('Y') ?>年 <?= $period_month ?> 發票中獎號碼</span>
+            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+              領獎注意事項
+            </button>
+            <div class="modal fade reminder" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">領獎注意事項</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>(1). 領獎期間自109年4月6日起至109年7月6日止，中獎人請於領獎期間攜帶國民身分證(非本國國籍人士得以護照、居留證或內政部移民署核發入出境許可證等替代)及中獎統一發票，依代發獎金單位公告之兌獎營業時間臨櫃兌領，逾期不得領獎。</p>
+                    <p>(2). 統一發票未依規定載明金額者，不得領獎。</p>
+                    <p>(3) .統一發票買受人為政府機關、公營事業、公立學校、部隊及營業人者，不得領獎。</p>
+                    <p>(4) .中三獎(含)以上者，依規定應由發獎單位扣繳20﹪所得稅款。</p>
+                    <p>(5) .中五獎(含)以上者，依規定應繳納0.4%印花稅款。</p>
+                    <p>(6) .中獎之統一發票，每張按其最高中獎獎別限領1個獎金。</p>
+                    <p>(7) .詳細領獎規定，請查閱「統一發票給獎辦法」。若有疑義，請洽財金公司客服專線：4128282(手機請撥：02-4128282)，或至財金公司網站查詢。</p>
+                    <p>(8) .財政部統一發票兌獎APP下載點：</p>
+                    <img src="./images/Image 002.png" alt="">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
@@ -207,11 +239,12 @@
         <a class="nav-link" href="?period=5">9-10月</a>
         <a class="nav-link" href="?period=6">11-12月</a>
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Delete</a>
+
       </nav>
     </div>
 
     <!-- 主要內容 -->
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center text-center">
       <form action="award_save.php" method="post">
         <h2><?= date('Y') ?>年 <?= $period_month ?> 發票中獎號碼</h2>
         <p><span class="font-weight-bold">尚未開獎</span>或<span class="font-weight-bold">尚未登錄號碼</span>喔</p>
@@ -228,18 +261,18 @@
                 </button>
               </div>
               <div class="modal-body">
-                <select name="year" readonly>
+                <select name="year" readonly class="form-control">
                   <option value="<?= date('Y') ?>"><?= date('Y') ?></option>
                 </select>
-                <select name="period" readonly>
-                  <option value="1"><?= $period_month ?></option>
+                <select name="period" readonly class="form-control">
+                  <option value="<?= $period_display ?>"><?= $period_month ?></option>
                 </select><br>
-                <input type="number" name="jackpot" placeholder="特別獎" required><br>
-                <input type="number" name="special" placeholder="特獎" required><br>
-                <input type="number" name="premium1" placeholder="頭獎-1" required><br>
-                <input type="number" name="premium2" placeholder="頭獎-2" required><br>
-                <input type="number" name="premium3" placeholder="頭獎-3" required><br>
-                <input type="number" name="additional" placeholder="增開六獎" required>
+                <input type="number" name="jackpot" placeholder="特別獎" required class="form-control"><br>
+                <input type="number" name="special" placeholder="特獎" required class="form-control"><br>
+                <input type="number" name="premium1" placeholder="頭獎-1" required class="form-control"><br>
+                <input type="number" name="premium2" placeholder="頭獎-2" required class="form-control"><br>
+                <input type="number" name="premium3" placeholder="頭獎-3" required class="form-control"><br>
+                <input type="number" name="additional" placeholder="增開六獎" required class="form-control">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
