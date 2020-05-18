@@ -1,5 +1,5 @@
 <?php
-include "./com/base.php";
+include_once "./com/base.php";
 $id = $_GET['id'];
 $year = $_POST['year'];
 $period = $_POST['period'];

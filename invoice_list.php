@@ -34,8 +34,8 @@
 
 <body>
   <?php
-  include "./com/base.php";
-  include "./include/header.php";
+  include_once "./com/base.php";
+  include_once "./include/header.php";
 
   // 設定讀取現在月份時，自動設定period是哪一階段
   if (date('n') == 1 || date('n') == 2) {

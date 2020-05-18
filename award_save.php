@@ -1,5 +1,5 @@
 <?php
-include "./com/base.php";
+include_once "./com/base.php";
 
 $year = $_POST['year'];
 $period = $_POST['period'];
@@ -8,7 +8,17 @@ $special = $_POST['special'];
 $premium1 = $_POST['premium1'];
 $premium2 = $_POST['premium2'];
 $premium3 = $_POST['premium3'];
-$additional = $_POST['additional'];
+$addition1 = $_POST['additionl'];
+if (isset($_POST['addition2'])) {
+    $addition2 = $_POST['addition2'];
+} else {
+    $addition2 = "null";
+}
+if (isset($_POST['addition3'])) {
+    $addition3 = $_POST['addition3'];
+} else {
+    $addition3 = "null";
+}
 
 $sql = "insert into prizenumber (
     `year`,
@@ -18,7 +28,9 @@ $sql = "insert into prizenumber (
     `premium1`,
     `premium2`,
     `premium3`,
-    `additional`
+    `addition1`,
+    `addition2`,
+    `addition3`
 ) values (
     '$year',
     '$period',
@@ -27,11 +39,12 @@ $sql = "insert into prizenumber (
     '$premium1',
     '$premium2',
     '$premium3',
-    '$additional'
+    '$addition1',
+    '$addition2',
+    '$addition3'
 )";
 
 $res = $pdo->exec($sql);
 
 
 header("location:award.php");
-?>

@@ -1,5 +1,5 @@
 <?php
-include "./com/base.php";
+include_once "./com/base.php";
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];

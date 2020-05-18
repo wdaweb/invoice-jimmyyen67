@@ -39,7 +39,7 @@
 <body>
 
   <?php
-  include("./include/header.php");
+  include_once ("./include/header.php");
 
 
   // 設定讀取現在月份時，自動設定period是哪一階段
@@ -98,7 +98,9 @@
     $premium1 = $res['premium1'];
     $premium2 = $res['premium2'];
     $premium3 = $res['premium3'];
-    $additional = $res['additional'];
+    $addition1 = $res['addition1'];
+    $addition2 = $res['addition2'];
+    $addition3 = $res['addition3'];
   ?>
     <!-- 選單列表 -->
     <div class="d-flex justify-content-center mt-3 mb-3">
@@ -220,7 +222,14 @@
           <td>
             <h5>增開六獎</h5>
           </td>
-          <td><span class="text-danger font-weight-bold text"><?= $additional ?></span></td>
+          <td><span class="text-danger font-weight-bold text"><?= $addition1 ?></span>
+          <span class="text-danger font-weight-bold text"><?= $addition2 ?></span>
+          <span class="text-danger font-weight-bold text"><?= $addition3 ?></span></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="border-0">
+          <a class="btn btn-link" href="prize.php">開始兌獎</a>
+          </td>
         </tr>
       </table>
     </div>
@@ -269,10 +278,12 @@
                 </select><br>
                 <input type="number" name="jackpot" placeholder="特別獎" required class="form-control"><br>
                 <input type="number" name="special" placeholder="特獎" required class="form-control"><br>
-                <input type="number" name="premium1" placeholder="頭獎-1" required class="form-control"><br>
-                <input type="number" name="premium2" placeholder="頭獎-2" required class="form-control"><br>
+                <input type="number" name="premium1" placeholder="頭獎-1" required class="form-control">
+                <input type="number" name="premium2" placeholder="頭獎-2" required class="form-control">
                 <input type="number" name="premium3" placeholder="頭獎-3" required class="form-control"><br>
-                <input type="number" name="additional" placeholder="增開六獎" required class="form-control">
+                <input type="number" name="addition1" placeholder="增開六獎-1" required class="form-control">
+                <input type="number" name="addition2" placeholder="增開六獎-2"  class="form-control">
+                <input type="number" name="addition3" placeholder="增開六獎-3"  class="form-control">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

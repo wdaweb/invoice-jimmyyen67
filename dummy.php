@@ -1,6 +1,6 @@
 <?php
 
-include("./com/base.php");
+include_once ("./com/base.php");
 
 
 $num = 100;

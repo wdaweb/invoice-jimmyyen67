@@ -11,8 +11,8 @@
 
 <body>
   <?php
-  include "./include/header.php";
-  include "./com/base.php";
+  include_once "./include/header.php";
+  include_once "./com/base.php";
 
   // $sql = "insert into invoice (
   // `period`,
