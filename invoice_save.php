@@ -14,21 +14,31 @@
   include "./include/header.php";
   include "./com/base.php";
 
-  $sql = "insert into invoice (
-  `period`,
-  `year`,
-  `code`,
-  `number`,
-  `expend`
-  ) values (
-    '" . $_POST['period'] . "',
-    '" . $_POST['year'] . "',
-    '" . $_POST['code'] . "',
-    '" . $_POST['number'] . "',
-    '" . $_POST['expend'] . "'
-    )";
+  // $sql = "insert into invoice (
+  // `period`,
+  // `year`,
+  // `code`,
+  // `number`,
+  // `expend`
+  // ) values (
+  //   '" . $_POST['period'] . "',
+  //   '" . $_POST['year'] . "',
+  //   '" . $_POST['code'] . "',
+  //   '" . $_POST['number'] . "',
+  //   '" . $_POST['expend'] . "'
+  //   )";
 
-  $res = $pdo->exec($sql);
+  // $res = $pdo->exec($sql);
+  $table = 'invoice';
+  $data = [
+    'period' => $_POST['period'],
+    'year' => $_POST['year'],
+    'code' => $_POST['code'],
+    'number' => $_POST['number'],
+    'expend' => $_POST['expend'],
+  ];
+
+  $res = save($table, $data);
 
   if ($_POST['period'] == 1) {
     $period = '1,2月';
