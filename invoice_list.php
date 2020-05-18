@@ -90,6 +90,7 @@
       <table>
         <tr>
           <div>
+            <a href="index.php"><button class="badge badge-info">首頁</button></a>
             <a href="?period=1"><button class="badge badge-warning">1,2月</button></a>
             <a href="?period=2"><button class="badge badge-warning">3,4月</button></a>
             <a href="?period=3"><button class="badge badge-warning">5.6月</button></a>
@@ -97,7 +98,6 @@
             <a href="?period=5"><button class="badge badge-warning">9,10月</button></a>
             <a href="?period=6"><button class="badge badge-warning">11,12月</button></a>
             <a href="award.php"><button class="badge badge-success">中獎號碼</button></a>
-            <a href="index.php"><button class="badge badge-info">首頁</button></a>
           </div>
         </tr>
       </table>

@@ -30,7 +30,8 @@
     .text {
       font-size: x-large;
     }
-    .reminder{
+
+    .reminder {
       text-align: left;
     }
   </style>
@@ -39,7 +40,7 @@
 <body>
 
   <?php
-  include_once ("./include/header.php");
+  include_once("./include/header.php");
 
 
   // 設定讀取現在月份時，自動設定period是哪一階段
@@ -198,37 +199,37 @@
           <td>
             <h5>三獎</h5>
           </td>
-          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元</span></td>
+          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金1萬元</span></td>
         </tr>
         <tr>
           <td>
             <h5>四獎</h5>
           </td>
-          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元</span></td>
+          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4,000元</span></td>
         </tr>
         <tr>
           <td>
             <h5>五獎</h5>
           </td>
-          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元</span></td>
+          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金1,000元</span></td>
         </tr>
         <tr>
           <td>
             <h5>六獎</h5>
           </td>
-          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金4萬元</span></td>
+          <td><span>同期統一發票收執聯末7 位數號碼與頭獎中獎號碼末7 位相同者各得獎金200元</span></td>
         </tr>
         <tr>
           <td>
             <h5>增開六獎</h5>
           </td>
           <td><span class="text-danger font-weight-bold text"><?= $addition1 ?></span>
-          <span class="text-danger font-weight-bold text"><?= $addition2 ?></span>
-          <span class="text-danger font-weight-bold text"><?= $addition3 ?></span></td>
+            <span class="text-danger font-weight-bold text"><?= $addition2 ?></span>
+            <span class="text-danger font-weight-bold text"><?= $addition3 ?></span></td>
         </tr>
         <tr>
           <td colspan="2" class="border-0">
-          <a class="btn btn-link" href="prize.php">開始兌獎</a>
+            <a class="btn btn-link" href="prize.php?period=<?= $period ?>">開獎囉！</a>
           </td>
         </tr>
       </table>
@@ -274,7 +275,7 @@
                   <option value="<?= date('Y') ?>"><?= date('Y') ?></option>
                 </select>
                 <select name="period" readonly class="form-control">
-                  <option value="<?= $period_display ?>"><?= $period_month ?></option>
+                  <option value="<?= $period ?>"><?= $period_month ?></option>
                 </select><br>
                 <input type="number" name="jackpot" placeholder="特別獎" required class="form-control"><br>
                 <input type="number" name="special" placeholder="特獎" required class="form-control"><br>
@@ -282,8 +283,8 @@
                 <input type="number" name="premium2" placeholder="頭獎-2" required class="form-control">
                 <input type="number" name="premium3" placeholder="頭獎-3" required class="form-control"><br>
                 <input type="number" name="addition1" placeholder="增開六獎-1" required class="form-control">
-                <input type="number" name="addition2" placeholder="增開六獎-2"  class="form-control">
-                <input type="number" name="addition3" placeholder="增開六獎-3"  class="form-control">
+                <input type="number" name="addition2" placeholder="增開六獎-2" class="form-control">
+                <input type="number" name="addition3" placeholder="增開六獎-3" class="form-control">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
