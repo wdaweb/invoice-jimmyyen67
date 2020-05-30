@@ -10,4 +10,4 @@ $expend = $_POST['expend'];
 $sql = "UPDATE invoice SET year='$year', period='$period', code='$code', number='$number', expend='$expend' WHERE id=$id";
 
 $res = $pdo->exec($sql);
-header ("location:invoice.php?period=$period");
+header ("location:invoice_list.php?period=$period");

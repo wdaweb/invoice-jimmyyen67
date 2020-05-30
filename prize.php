@@ -34,10 +34,17 @@ $addition1 = $prize['addition1'];
 $addition2 = $prize['addition2'];
 $addition3 = $prize['addition3'];
 
-echo "<pre>";
-print_r($prize);
-echo "</pre>";
 $money = 0;
+$win_jackpot = [];
+$win_special = [];
+$win_premium_3 = [];
+$win_premium_4 = [];
+$win_premium_5 = [];
+$win_premium_6 = [];
+$win_premium_7 = [];
+$win_premium_8 = [];
+$win_addition = [];
+
 foreach ($invoice as $invoice) {
 
   $code = $invoice['code'];
@@ -45,71 +52,48 @@ foreach ($invoice as $invoice) {
   $expend = $invoice['expend'];
 
   if ($number == $jackpot) {
-    echo "就是這一張發票" .  "=>" . $code . $number;
-    echo "<br>";
-    echo "【特別獎】1,000萬";
+    // 【特別獎】1,000萬
+    $win_jackpot[] = $code . $number;
     $money = $money + 10000000;
-    echo "<br>";
   } elseif ($invoice['number'] == $prize['special']) {
-    echo "就是這一張發票" . "=>" .  $code . $number;
-    echo "<br>";
-    echo "【特獎】200萬";
+    // 【特獎】200萬
+    $win_special[] = $code . $number;
     $money = $money + 2000000;
-    echo "<br>";
   } elseif (
     $number == $premium1 ||
     $number == $premium2 ||
     $number == $premium3
   ) {
-    echo "就是這一張發票" . "=>" . $code . $number;
-    echo "<br>";
-    echo "【頭獎】100萬";
+    // 【頭獎】100萬
+    $win_premium_8[] = $code . $number;
     $money = $money + 1000000;
-    echo "<br>";
   } elseif (substr($number, -7) == substr($premium1, -7) || substr($number, -7) == substr($premium2, -7) || substr($number, -7) == substr($premium3, -7)) {
-    echo "就是這一張發票" .  "=>" . $code . $number;
-    echo "<br>";
-    echo "【二獎】20萬";
+    // 【二獎】20萬
+    $win_premium_7[] = $code . $number;
     $money = $money + 200000;
-    echo "<br>";
   } elseif (substr($number, -6) == substr($premium1, -6) || substr($number, -6) == substr($premium2, -6) || substr($number, -6) == substr($premium3, -6)) {
-    echo "就是這一張發票" . "=>" .  $code . $number;
-    echo "<br>";
-    echo "【三獎】1萬";
+    // 【三獎】1萬
+    $win_premium_6[] = $code . $number;
     $money = $money + 10000;
-    echo "<br>";
   } elseif (substr($number, -5) == substr($premium1, -5) || substr($number, -5) == substr($premium2, -5) || substr($number, -5) == substr($premium3, -5)) {
-    echo "就是這一張發票" . "=>" .  $code . $number;
-    echo "<br>";
-    echo "【四獎】4,000";
+    // 【四獎】4,000
+    $win_premium_5[] = $code . $number;
     $money = $money + 4000;
-    echo "<br>";
   } elseif (substr($number, -4) == substr($premium1, -4) || substr($number, -4) == substr($premium2, -4) || substr($number, -4) == substr($premium3, -4)) {
-    echo "就是這一張發票" . "=>" .  $code . $number;
-    echo "<br>";
-    echo "【五獎】1,000";
+    // 【五獎】1,000
+    $win_premium_4[] = $code . $number;
     $money = $money + 1000;
-    echo "<br>";
   } elseif (substr($number, -3) == substr($premium1, -3) || substr($number, -3) == substr($premium2, -3) || substr($number, -3) == substr($premium3, -3)) {
-    echo "就是這一張發票" . "=>" .  $code . $number;
-    echo "<br>";
-    echo "【六獎】200";
+    // 【六獎】200
+    $win_premium_3[] = $code . $number;
     $money = $money + 200;
-    echo "<br>";
-  } elseif (substr($number, -3) == $addition1 || substr($number, -3) == $addition1 || substr($number, -3) == $addition1) {
-    echo "就是這一張發票" . "=>" .  $code . $number;
-    echo "<br>";
-    echo "【新增六獎】200";
+  } elseif (substr($number, -3) == $addition1 || substr($number, -3) == $addition2 || substr($number, -3) == $addition3) {
+    //【新增六獎】200
+    $win_addition[] = $code . $number;
     $money = $money + 200;
-    echo "<br>";
   }
 }
-echo "本期發票總計中了：" . number_format($money, 0, ',', ',') . "元";
-
-
-
-
-
+// }number_format($money, 0, ',', ',')
 ?>
 
 <body>
@@ -120,13 +104,157 @@ echo "本期發票總計中了：" . number_format($money, 0, ',', ',') . "元";
     <a href="award.php"><button class="btn btn-outline-success btn-sm mt-2">中獎號碼</button></a>
     <a href="https://www.etax.nat.gov.tw/etw-main/web/ETW183W1/" target="_blank"><button class="btn btn-outline-info btn-sm mt-2">財政部網站</button></a>
   </div>
-  <div>
 
-
-
-
-
-
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-4">
+        <table>
+          <tr>
+            <th>獎別</th>
+            <th>發票號碼</th>
+            <th>中獎金額</th>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_jackpot as $win_jackpot) {
+              echo "<td>";
+              echo "特別獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_jackpot;
+              echo "</td>";
+              echo "<td>";
+              echo "1,000萬";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_special as $win_special) {
+              echo "<td>";
+              echo "別獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_special;
+              echo "</td>";
+              echo "<td>";
+              echo "200萬";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_premium_8 as $win_premium_8) {
+              echo "<td>";
+              echo "頭獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_8;
+              echo "</td>";
+              echo "<td>";
+              echo "20萬";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_premium_7 as $win_premium_7) {
+              echo "<td>";
+              echo "頭獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_7;
+              echo "</td>";
+              echo "<td>";
+              echo "4萬";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_premium_6 as $win_premium_6) {
+              echo "<td>";
+              echo "三獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_6;
+              echo "</td>";
+              echo "<td>";
+              echo "1萬";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_premium_5 as $win_premium_5) {
+              echo "<td>";
+              echo "四獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_5;
+              echo "</td>";
+              echo "<td>";
+              echo "4,000元";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_premium_4 as $win_premium_4) {
+              echo "<td>";
+              echo "五獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_4;
+              echo "</td>";
+              echo "<td>";
+              echo "1,000元";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_premium_3 as $win_premium_3) {
+              echo "<td>";
+              echo "六獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_3;
+              echo "</td>";
+              echo "<td>";
+              echo "200元";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <?php
+            foreach ($win_addition as $win_addition) {
+              echo "<td>";
+              echo "增開六獎";
+              echo "</td>";
+              echo "<td>";
+              echo $win_addition;
+              echo "</td>";
+              echo "<td>";
+              echo "200元";
+              echo "</td>";
+            }
+            ?>
+          </tr>
+          <tr>
+            <td colspan="3">本期中獎金額：<?= number_format($money, 0, ',', ',') ?>元</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </body>
 

@@ -8,7 +8,7 @@ $special = $_POST['special'];
 $premium1 = $_POST['premium1'];
 $premium2 = $_POST['premium2'];
 $premium3 = $_POST['premium3'];
-$addition1 = $_POST['additionl'];
+$addition1 = $_POST['addition1'];
 if (isset($_POST['addition2'])) {
     $addition2 = $_POST['addition2'];
 } else {
