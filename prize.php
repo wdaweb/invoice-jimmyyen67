@@ -93,7 +93,28 @@ foreach ($invoice as $invoice) {
     $money = $money + 200;
   }
 }
-// }number_format($money, 0, ',', ',')
+
+switch ($prize['period']) {
+  case 1;
+    $period_month = "第1,2月";
+    break;
+  case 2;
+    $period_month = "第3,4月";
+    break;
+  case 3;
+    $period_month = "第5,6月";
+    break;
+  case 4;
+    $period_month = "第7,8月";
+    break;
+  case 5;
+    $period_month = "第9,10月";
+    break;
+  case 6;
+    $period_month = "第11,12月";
+    break;
+}
+
 ?>
 
 <body>
@@ -107,12 +128,15 @@ foreach ($invoice as $invoice) {
 
   <div class="container">
     <div class="row d-flex justify-content-center">
-      <div class="col-4">
-        <table>
-          <tr>
-            <th>獎別</th>
-            <th>發票號碼</th>
-            <th>中獎金額</th>
+      <div class="col-5">
+        <p class="text-center pt-3">
+          <span class="text-dark h2"><?= $prize['year'] ?>年 <?= $period_month ?></span>
+          <span class="text-success h3">中獎發票明細</span>
+        </p>
+        <table class="table">
+          <th>獎別</th>
+          <th>發票號碼</th>
+          <th>中獎金額</th>
           </tr>
           <tr>
             <?php
