@@ -114,8 +114,31 @@
         <a class="nav-link" href="?period=4">7-8月</a>
         <a class="nav-link" href="?period=5">9-10月</a>
         <a class="nav-link" href="?period=6">11-12月</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Delete</a>
+        <button type="button" id="delete-button" class="btn btn-outline-danger btn-sm text-danger" data-toggle="modal" data-target="#awarddelete">Delete</a>
       </nav>
+      <div class="modal fade reminder" id="awarddelete" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="awarddelete"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h1>是否確定刪除此筆資料？</h1>
+              <p class="font-weight-bold">資料刪除後無法復原，需要再次輸入正確獎號。</p>
+            </div>
+            <div class="modal-footer">
+              <form action="award_delete.php?">
+                <input type="hidden" name="period" value="<?= $period ?>">
+                <input type="submit" class="btn btn-danger btn-sm" value="確定刪除">
+              </form>
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- 表格本體 -->
@@ -127,14 +150,14 @@
           </td>
           <td>
             <span class="h3"><?= date('Y') ?>年 <?= $period_month ?> 發票中獎號碼</span>
-            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-outline-info btn-sm" data-toggle="modal" data-target="#rulesforprize">
               領獎注意事項
             </button>
-            <div class="modal fade reminder" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade reminder" id="rulesforprize" tabindex="-1" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">領獎注意事項</h5>
+                    <h5 class="modal-title" id="rulesforprizeLabel">領獎注意事項</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -271,12 +294,13 @@
                 </button>
               </div>
               <div class="modal-body">
-                <select name="year" readonly class="form-control">
-                  <option value="<?= date('Y') ?>"><?= date('Y') ?></option>
-                </select>
-                <select name="period" readonly class="form-control">
-                  <option value="<?= $period ?>"><?= $period_month ?></option>
-                </select><br>
+
+                <input type="hidden" name="year" value="<?= date('Y') ?>">
+                <!-- <option disabled value="<?= date('Y') ?>"><?= date('Y') ?>></option> -->
+
+
+                <input type="hidden" name="period" value="<?= $period ?>">
+                <!-- <option disabled value="<?= $period ?>"><?= $period_month ?></option> -->
                 <input type="number" name="jackpot" placeholder="特別獎" required class="form-control"><br>
                 <input type="number" name="special" placeholder="特獎" required class="form-control"><br>
                 <input type="number" name="premium1" placeholder="頭獎-1" required class="form-control">

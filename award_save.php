@@ -47,4 +47,4 @@ $sql = "insert into prizenumber (
 $res = $pdo->exec($sql);
 
 
-header("location:award.php");
+header("location:award.php?period=$period");
