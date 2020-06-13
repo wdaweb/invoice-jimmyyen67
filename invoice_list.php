@@ -7,6 +7,7 @@
   <title>統一發票管理列表</title>
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/bootstrap.css">
+  <script src="https://kit.fontawesome.com/65952ca494.js" crossorigin="anonymous"></script>
 
   <style>
     * {
@@ -82,7 +83,12 @@
 
   // 設定抓取內容
   $year = date('Y');
-  $list=all('invoice',['period'=> $period]);
+  $total = counts('invoice', ['period' => $period]);
+  $onepage = 10;
+  $pages = ceil($total / 10);
+  $nowpage = (!empty($_GET['p'])) ? $_GET['p'] : 1;
+  $start = ($nowpage - 1) * $onepage;
+  $list = all('invoice', ['period' => $period], "order by `id` desc limit $start,$onepage", " order by ID desc");
   ?>
 
   <div class="container main">
@@ -91,12 +97,12 @@
         <tr>
           <div>
             <a href="index.php"><button class="badge badge-info">首頁</button></a>
-            <a href="?period=1"><button class="badge badge-warning">1,2月</button></a>
-            <a href="?period=2"><button class="badge badge-warning">3,4月</button></a>
-            <a href="?period=3"><button class="badge badge-warning">5.6月</button></a>
-            <a href="?period=4"><button class="badge badge-warning">7,8月</button></a>
-            <a href="?period=5"><button class="badge badge-warning">9,10月</button></a>
-            <a href="?period=6"><button class="badge badge-warning">11,12月</button></a>
+            <a href="?period=1&page=1"><button class="badge badge-warning">1,2月</button></a>
+            <a href="?period=2&page=1"><button class="badge badge-warning">3,4月</button></a>
+            <a href="?period=3&page=1"><button class="badge badge-warning">5.6月</button></a>
+            <a href="?period=4&page=1"><button class="badge badge-warning">7,8月</button></a>
+            <a href="?period=5&page=1"><button class="badge badge-warning">9,10月</button></a>
+            <a href="?period=6&page=1"><button class="badge badge-warning">11,12月</button></a>
             <a href="award.php"><button class="badge badge-success">中獎號碼</button></a>
           </div>
         </tr>
@@ -105,6 +111,46 @@
     <div>
       <h2 class="mt-2"><?= $year ?>年 <?= $period_month ?> 發票列表</h2>
     </div>
+
+    <div style="text-align:center;" class="m-auto">
+      <?php
+      if ($nowpage > 0) {
+        if ($nowpage == 1) {
+      ?>
+          <a href="#" class="btn btn-outline-secondary btn-sm disabled" role="button" style="width:4rem;">&lt;</a>
+        <?php
+        } else {
+        ?>
+          <a role="button" class="btn btn-primary btn-sm" href="?period=<?= $period ?>&p=<?= $nowpage - 1 ?>" style="width:4rem;">&lt;</a>
+        <?php
+        }
+        ?>
+      <?php
+      }
+      ?>
+      <?php
+      for ($i = 1; $i <= $pages; $i++) {
+        $buttonstyle = ($i == $nowpage) ? 'btn btn-secondary btn-sm' : 'btn btn-outline-secondary btn-sm';
+      ?>
+        <a href="?period=<?= $period ?>&p=<?= $i ?>"><button class="<?= $buttonstyle ?>" style="width:2rem;"><?= $i ?></button></a>
+        <?php
+      }
+      if ($nowpage <= $pages) {
+        if ($nowpage == $pages) {
+        ?>
+          <a href="#" class="btn btn-outline-secondary btn-sm disabled" role="button" style="width:4rem;">&gt;</a>
+        <?php
+        } else {
+        ?>
+          <a role="button" class="btn btn-primary btn-sm" href="?period=<?= $period ?>&p=<?= $nowpage + 1 ?>" style="width:4rem;">&gt;</a>
+        <?php
+        }
+        ?>
+      <?php
+      }
+      ?>
+    </div>
+
     <div class="container">
       <div class="row">
         <table class="table table-borderless table-hover">
@@ -150,6 +196,7 @@
             ?>
           </tbody>
         </table>
+
       </div>
     </div>
   </div>

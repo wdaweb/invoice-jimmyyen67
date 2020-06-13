@@ -252,7 +252,7 @@
         </tr>
         <tr>
           <td colspan="2" class="border-0">
-            <a class="btn btn-link" href="prize.php?period=<?= $period ?>">開獎囉！</a>
+            <a class="btn btn-outline-success w-100 my-3" href="prize.php?period=<?= $period ?>">開獎囉！</a>
           </td>
         </tr>
       </table>

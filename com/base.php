@@ -43,7 +43,7 @@ function find($table, $arg)
 
 
 // 算筆數
-function nums($table, ...$arg)
+function counts($table, ...$arg)
 {
     global $pdo;
     $sql = "select count(*) from $table ";
