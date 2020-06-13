@@ -53,11 +53,11 @@ foreach ($invoice as $invoice) {
 
   if ($number == $jackpot) {
     // 【特別獎】1,000萬
-    $win_jackpot[] = $code . $number;
+    $win_jackpot[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 10000000;
   } elseif ($invoice['number'] == $prize['special']) {
     // 【特獎】200萬
-    $win_special[] = $code . $number;
+    $win_special[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 2000000;
   } elseif (
     $number == $premium1 ||
@@ -65,31 +65,31 @@ foreach ($invoice as $invoice) {
     $number == $premium3
   ) {
     // 【頭獎】100萬
-    $win_premium_8[] = $code . $number;
+    $win_premium_8[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 1000000;
   } elseif (substr($number, -7) == substr($premium1, -7) || substr($number, -7) == substr($premium2, -7) || substr($number, -7) == substr($premium3, -7)) {
     // 【二獎】20萬
-    $win_premium_7[] = $code . $number;
+    $win_premium_7[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 200000;
   } elseif (substr($number, -6) == substr($premium1, -6) || substr($number, -6) == substr($premium2, -6) || substr($number, -6) == substr($premium3, -6)) {
     // 【三獎】1萬
-    $win_premium_6[] = $code . $number;
+    $win_premium_6[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 10000;
   } elseif (substr($number, -5) == substr($premium1, -5) || substr($number, -5) == substr($premium2, -5) || substr($number, -5) == substr($premium3, -5)) {
     // 【四獎】4,000
-    $win_premium_5[] = $code . $number;
+    $win_premium_5[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 4000;
   } elseif (substr($number, -4) == substr($premium1, -4) || substr($number, -4) == substr($premium2, -4) || substr($number, -4) == substr($premium3, -4)) {
     // 【五獎】1,000
-    $win_premium_4[] = $code . $number;
+    $win_premium_4[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 1000;
   } elseif (substr($number, -3) == substr($premium1, -3) || substr($number, -3) == substr($premium2, -3) || substr($number, -3) == substr($premium3, -3)) {
     // 【六獎】200
-    $win_premium_3[] = $code . $number;
+    $win_premium_3[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 200;
   } elseif (substr($number, -3) == $addition1 || substr($number, -3) == $addition2 || substr($number, -3) == $addition3) {
     //【新增六獎】200
-    $win_addition[] = $code . $number;
+    $win_addition[] = ['codenumber' => $code . $number, 'expend' => $expend];
     $money = $money + 200;
   }
 }
@@ -134,18 +134,23 @@ switch ($prize['period']) {
           <span class="text-success h3">中獎發票明細</span>
         </p>
         <table class="table">
-          <th>獎別</th>
-          <th>發票號碼</th>
-          <th>中獎金額</th>
+          <tr class="text-danger">
+            <th>獎別</th>
+            <th>發票號碼</th>
+            <th>花費</th>
+            <th>中獎金額</th>
           </tr>
           <tr>
             <?php
-            foreach ($win_jackpot as $win_jackpot) {
+            foreach ($win_jackpot as $key => $value) {
               echo "<td>";
               echo "特別獎";
               echo "</td>";
               echo "<td>";
-              echo $win_jackpot;
+              echo $win_jackpot[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_jackpot[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "1,000萬";
@@ -155,12 +160,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_special as $win_special) {
+            foreach ($win_special as $key => $value) {
               echo "<td>";
               echo "別獎";
               echo "</td>";
               echo "<td>";
-              echo $win_special;
+              echo $win_special[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_special[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "200萬";
@@ -170,12 +178,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_premium_8 as $win_premium_8) {
+            foreach ($win_premium_8 as $key => $value) {
               echo "<td>";
               echo "頭獎";
               echo "</td>";
               echo "<td>";
-              echo $win_premium_8;
+              echo $win_premium_8[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_8[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "20萬";
@@ -185,12 +196,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_premium_7 as $win_premium_7) {
+            foreach ($win_premium_7 as $key => $value) {
               echo "<td>";
               echo "頭獎";
               echo "</td>";
               echo "<td>";
-              echo $win_premium_7;
+              echo $win_premium_7[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_7[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "4萬";
@@ -200,12 +214,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_premium_6 as $win_premium_6) {
+            foreach ($win_premium_6 as $key => $value) {
               echo "<td>";
               echo "三獎";
               echo "</td>";
               echo "<td>";
-              echo $win_premium_6;
+              echo $win_premium_6[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_6[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "1萬";
@@ -215,12 +232,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_premium_5 as $win_premium_5) {
+            foreach ($win_premium_5 as $key => $value) {
               echo "<td>";
               echo "四獎";
               echo "</td>";
               echo "<td>";
-              echo $win_premium_5;
+              echo $win_premium_5[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_5[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "4,000元";
@@ -230,12 +250,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_premium_4 as $win_premium_4) {
+            foreach ($win_premium_4 as $key => $value) {
               echo "<td>";
               echo "五獎";
               echo "</td>";
               echo "<td>";
-              echo $win_premium_4;
+              echo $win_premium_4[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_4[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "1,000元";
@@ -245,12 +268,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_premium_3 as $win_premium_3) {
+            foreach ($win_premium_3 as $key => $value) {
               echo "<td>";
               echo "六獎";
               echo "</td>";
               echo "<td>";
-              echo $win_premium_3;
+              echo $win_premium_3[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_premium_3[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "200元";
@@ -260,12 +286,15 @@ switch ($prize['period']) {
           </tr>
           <tr>
             <?php
-            foreach ($win_addition as $win_addition) {
+            foreach ($win_addition as $key => $value) {
               echo "<td>";
               echo "增開六獎";
               echo "</td>";
               echo "<td>";
-              echo $win_addition;
+              echo $win_addition[$key]['codenumber'];
+              echo "</td>";
+              echo "<td>";
+              echo $win_addition[$key]['expend'];
               echo "</td>";
               echo "<td>";
               echo "200元";
@@ -274,7 +303,7 @@ switch ($prize['period']) {
             ?>
           </tr>
           <tr>
-            <td colspan="3">本期中獎金額：<?= number_format($money, 0, ',', ',') ?>元</td>
+            <td colspan="4">本期中獎金額：<h2 class="text-danger font-weight-bolder d-inline"><?= number_format($money, 0, ',', ',') ?></h2> 元</td>
           </tr>
         </table>
       </div>
