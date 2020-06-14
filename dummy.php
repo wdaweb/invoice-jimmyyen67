@@ -1,6 +1,6 @@
 <?php
 
-include_once ("./com/base.php");
+include_once("./com/base.php");
 
 
 $num = 100;
@@ -17,3 +17,5 @@ for ($i = 0; $i < $num; $i++) {
   echo $data['code'] . $data['number'] . "<br>";
   save("invoice", $data);
 }
+
+to("index.php");

@@ -84,7 +84,7 @@
   // 設定抓取內容
   $year = date('Y');
   $total = counts('invoice', ['period' => $period]);
-  $onepage = 10;
+  $onepage = 7;
   $pages = ceil($total / 10);
   $nowpage = (!empty($_GET['p'])) ? $_GET['p'] : 1;
   $start = ($nowpage - 1) * $onepage;

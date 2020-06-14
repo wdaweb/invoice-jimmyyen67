@@ -83,6 +83,7 @@ include_once "./include/header.php";
         </div>
         <a href="invoice_list.php"><button class="btn btn-outline-primary btn-sm mt-2">查看發票</button></a>
         <a href="award.php"><button class="btn btn-outline-success btn-sm mt-2">中獎號碼</button></a>
+        <a href="dummy.php"><button class="btn btn-outline-warning btn-sm mt-2">自動產生</button></a>
         <a href="https://www.etax.nat.gov.tw/etw-main/web/ETW183W1/" target="_blank"><button class="btn btn-outline-info btn-sm mt-2">財政部網站</button></a>
       </div>
     </div>
