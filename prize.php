@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/65952ca494.js" crossorigin="anonymous"></script>
 </head>
 <?php
 include_once "./include/header.php";
@@ -122,8 +123,8 @@ switch ($prize['period']) {
   <div class="container text-center">
     <a href="index.php"><button class="btn btn-primary btn-sm mt-2">登錄頁面</button></a>
     <a href="invoice_list.php"><button class="btn btn-outline-primary btn-sm mt-2">查看發票</button></a>
-    <a href="award.php"><button class="btn btn-outline-success btn-sm mt-2">中獎號碼</button></a>
     <a href="https://www.etax.nat.gov.tw/etw-main/web/ETW183W1/" target="_blank"><button class="btn btn-outline-info btn-sm mt-2">財政部網站</button></a>
+    <a href="award.php?period=<?= $period ?>"><button class="btn btn-outline-success btn-sm mt-2"><i class="fas fa-reply-all"></i></button></a>
   </div>
 
   <div class="container">
@@ -150,7 +151,7 @@ switch ($prize['period']) {
               echo $win_jackpot[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_jackpot[$key]['expend'].'元';
+              echo $win_jackpot[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "1,000萬";
@@ -168,7 +169,7 @@ switch ($prize['period']) {
               echo $win_special[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_special[$key]['expend'].'元';
+              echo $win_special[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "200萬";
@@ -186,7 +187,7 @@ switch ($prize['period']) {
               echo $win_premium_8[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_premium_8[$key]['expend'].'元';
+              echo $win_premium_8[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "20萬";
@@ -204,7 +205,7 @@ switch ($prize['period']) {
               echo $win_premium_7[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_premium_7[$key]['expend'].'元';
+              echo $win_premium_7[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "4萬";
@@ -222,7 +223,7 @@ switch ($prize['period']) {
               echo $win_premium_6[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_premium_6[$key]['expend'].'元';
+              echo $win_premium_6[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "1萬";
@@ -240,7 +241,7 @@ switch ($prize['period']) {
               echo $win_premium_5[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_premium_5[$key]['expend'].'元';
+              echo $win_premium_5[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "4,000元";
@@ -258,7 +259,7 @@ switch ($prize['period']) {
               echo $win_premium_4[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_premium_4[$key]['expend'].'元';
+              echo $win_premium_4[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "1,000元";
@@ -276,7 +277,7 @@ switch ($prize['period']) {
               echo $win_premium_3[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_premium_3[$key]['expend'].'元';
+              echo $win_premium_3[$key]['expend'] . '元';
               echo "</td>";
               echo "<td>";
               echo "200元";
@@ -294,7 +295,7 @@ switch ($prize['period']) {
               echo $win_addition[$key]['codenumber'];
               echo "</td>";
               echo "<td>";
-              echo $win_addition[$key]['expend'],'元';
+              echo $win_addition[$key]['expend'], '元';
               echo "</td>";
               echo "<td>";
               echo "200元";
