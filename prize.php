@@ -67,11 +67,11 @@ foreach ($invoice as $invoice) {
   ) {
     // 【頭獎】100萬
     $win_premium_8[] = ['codenumber' => $code . $number, 'expend' => $expend];
-    $money = $money + 200000;
+    $money = $money + 1000000;
   } elseif (substr($number, -7) == substr($premium1, -7) || substr($number, -7) == substr($premium2, -7) || substr($number, -7) == substr($premium3, -7)) {
     // 【二獎】20萬
     $win_premium_7[] = ['codenumber' => $code . $number, 'expend' => $expend];
-    $money = $money + 40000;
+    $money = $money + 200000;
   } elseif (substr($number, -6) == substr($premium1, -6) || substr($number, -6) == substr($premium2, -6) || substr($number, -6) == substr($premium3, -6)) {
     // 【三獎】1萬
     $win_premium_6[] = ['codenumber' => $code . $number, 'expend' => $expend];

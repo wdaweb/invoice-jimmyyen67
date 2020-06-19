@@ -1,6 +1,6 @@
 <?php
 include_once "./com/base.php";
-$id = $_GET['id'];
+$id = $_POST['id'];
 $year = $_POST['year'];
 $period = $_POST['period'];
 $code = $_POST['code'];

@@ -1,6 +1,6 @@
 <?php
 include_once "./com/base.php";
-$id = $_GET['id'];
+$id = $_POST['id'];
 
 
 $sql = "DELETE from invoice WHERE id=$id";

@@ -271,7 +271,7 @@
         <a class="nav-link" href="?period=4">7-8月</a>
         <a class="nav-link" href="?period=5">9-10月</a>
         <a class="nav-link" href="?period=6">11-12月</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Delete</a>
+        <button type="button" id="disabled-button" class="btn btn-outline-danger btn-sm text-danger disabled" aria-disabled="true">Delete</a>
 
       </nav>
     </div>
