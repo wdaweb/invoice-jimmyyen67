@@ -41,17 +41,23 @@
   $res = save($table, $data);
 
   if ($_POST['period'] == 1) {
-    $period = '1,2月';
+    $period_month = '1,2月';
+    $period = 1;
   } elseif ($_POST['period'] == 2) {
-    $period = '3,4月';
+    $period_month = '3,4月';
+    $period = 2;
   } elseif ($_POST['period'] == 3) {
-    $period = '5,6月';
+    $period_month = '5,6月';
+    $period = 3;
   } elseif ($_POST['period'] == 4) {
-    $period = '7,8月';
+    $period_month = '7,8月';
+    $period = 4;
   } elseif ($_POST['period'] == 5) {
-    $period = '9,10月';
+    $period_month = '9,10月';
+    $period = 5;
   } elseif ($_POST['period'] == 6) {
-    $period = '11,12月';
+    $period_month = '11,12月';
+    $period = 6;
   }
 
   if ($res == 1) {
@@ -66,7 +72,7 @@
             </tr>
             <tr>
               <td>月份：</td>
-              <td><?= $period ?></td>
+              <td><?= $period_month ?></td>
             </tr>
             <tr>
               <td>發票號碼：</td>
@@ -78,7 +84,7 @@
             </tr>
             <tr>
               <td><a href="index.php">繼續登錄</a></td>
-              <td><a href="invoice_list.php">查看列表</a></td>
+              <td><a href="invoice_list.php?period=<?= $period ?>">查看列表</a></td>
             </tr>
           </table>
         </div>
